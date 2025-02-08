@@ -9,12 +9,14 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-const   corsConfig = {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow specific HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow essential headers
-    credentials:true,
-}
+const corsConfig = {
+    origin: ["http://localhost:3000", "https://your-vercel-app.vercel.app"], 
+    methods: ["GET", "POST", "PUT", "DELETE"], 
+    allowedHeaders: ["Content-Type", "Authorization"], 
+    credentials: true,
+};
+
+app.use(cors(corsConfig));
 
 // Middlewares
 app.use(express.json());
